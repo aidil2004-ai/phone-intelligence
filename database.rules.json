@@ -1,0 +1,14 @@
+{
+  "rules": {
+    "phone_reports": {
+      ".read": true,
+      "$phoneKey": {
+        ".read": true,
+        "$reportId": {
+          ".write": "!data.exists()",
+          ".validate": "newData.hasChildren(['tag', 'category', 'timestamp']) && newData.child('tag').isString() && newData.child('tag').val().length <= 60"
+        }
+      }
+    }
+  }
+}
